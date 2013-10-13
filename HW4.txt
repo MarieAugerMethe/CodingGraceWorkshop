@@ -1,0 +1,78 @@
+HW4 <- read.table("Stats1.13.HW.04.txt",header=T)
+summary(HW4)
+names(HW4)
+
+attach(HW4)
+################################################
+#Question 1
+round(cor(salary,years),2)  #0.74
+
+#Question 2
+round(cor(salary,courses),2)  #0.54
+
+
+
+
+################################################
+# Question 3
+
+
+What is the percentage of variance explained in a regression model 
+with salary as the outcome variable and professional experience as the predictor variable?
+
+Fit1 <- lm(salary ~ courses)
+
+summary(Fit1)$r.squared
+
+# 0.29270
+################################################
+# Question 4
+Fit2 <- lm(salary ~ years)
+
+summary(Fit2)
+
+summary(Fit2)$r.squared
+
+# 0.5548702
+
+################################################
+# Question 5
+
+# Multiple Linear Regression
+
+Fit3 <- lm(salary ~ years+courses)
+
+summary(Fit3)
+
+summary(Fit3)$r.squared
+
+# 0.6511318
+
+###############################################
+
+# Question 6
+What is the standardized regression coefficient 
+for years of professional experience, predicting salary?
+
+
+###############################################
+# Question 7
+What is the standardized regression coefficient 
+for courses completed, predicting salary?
+
+###############################################
+# Question 8
+What is the mean of the salary distribution predicted by the model including both 
+years of professional experience and courses completed as predictors? (with 0 decimal places)
+
+###############################################
+# Question 9
+What is the mean of the residual distribution for the model predicting salary 
+from both years of professional experience and courses completed? (with 0 decimal places)
+
+###############################################
+#Question 10
+Are the residuals from the regression model with both predictors normally distributed?
+-Yes
+-No
+###############################################
