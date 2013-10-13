@@ -1,4 +1,3 @@
-
 #Coursera 
 
 fileurl='https://spark-public.s3.amazonaws.com/stats1/datafiles/Stats1.13.HW.02.txt'
