@@ -25,7 +25,7 @@ confint(FitQ1)[2,]
 # Run a regression model with salary as the outcome variable and courses as the predictor variable. 
 # What is the 95% confidence interval for the regression coefficient?
 
-FitQ1 <- lm(salary~courses)
+FitQ2 <- lm(salary~courses)
 confint(FitQ2)
 confint(FitQ2)[2,]
 
@@ -42,14 +42,25 @@ confint(FitQ2)[2,]
 
 FitQ3 <- lm(salary~years+courses)
 
+AIC(FitQ1) # 
+AIC(FitQ2) #
+AIC(FitQ3) # Both
+
+
 ##############################################################################
 # Question 4
 # Run a standardized multiple regression model with both predictors. 
 # Do the confidence interval values differ from the corresponding unstandardized model?
 
+# Use the scale() function
+FitQ4 <- lm(scale(salary)~scale(years)+scale(courses))
+
 ##############################################################################
 # Question 5
 # What function could you use to take a random subset of the data?
+
+# sample()
+
 ##############################################################################
 # Question 6
 # Run the following command in R: set.seed(1). 
