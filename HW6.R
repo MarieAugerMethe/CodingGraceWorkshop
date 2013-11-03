@@ -1,4 +1,3 @@
-
 #change the https to http
 fileurl ="http://d396qusza40orc.cloudfront.net/stats1%2Fdatafiles%2FStats1.13.HW.06.txt"
 
@@ -94,3 +93,58 @@ by(HW6data$salary, HW6data$profession,mean)
 # - Courses and profession
 # - Years, courses, and profession
 #########################################################################################
+# 1   5638
+# 2   4930 6345
+# 3   4807
+# 4   4140 5473
+# 5   9204
+# 6   YES
+# 7   15903
+# 8   YES
+# 9   24611.1
+#10   ALL
+#####################################################################
+#change the https to http
+fileurl ="http://d396qusza40orc.cloudfront.net/stats1%2Fdatafiles%2FStats1.13.HW.06.txt"
+
+
+HW6data <- read.table( fileurl , header = TRUE );
+
+names(HW6data)
+
+Fit1 <- lm(salary ~ year, data=HW6data) 
+coef(Fit1)
+confint(Fit1)
+
+#####################################################################
+
+Fit2 <- lm(salary ~ year+courses, data=HW6data) 
+coef(Fit2)
+
+#####################################################################
+
+HW6.teach=HW6data[HW6data$profession=="teacher",]
+HW6.law=HW6data[HW6data$profession=="lawyer",]
+HW6.doct=HW6data[HW6data$profession=="doctor",]
+
+
+prof.code = C(HW6data$profession, treatment)
+model4 = lm(HW6data$salary ~ HW6data$years + HW6data$courses + (prof.code)) 
+summary(model4)
+
+# Question 5
+9204
+
+#####################################################################
+# Question 10
+# What combination of predictors represents the best model in terms of predicting salary?
+# - Years and courses
+# - Years and profession
+# - Courses and profession
+# - Years, courses, and profession
+
+AIC(lm(salary ~ years+courses, data=HW6data))
+AIC(lm(salary ~ years+profession, data=HW6data))
+AIC(lm(salary ~ courses+profession, data=HW6data))
+AIC(lm(salary ~ years+courses+profession, data=HW6data))  #ALL
+#####################################################################
