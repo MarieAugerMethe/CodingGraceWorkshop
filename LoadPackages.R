@@ -4,3 +4,9 @@
 install.packages("psych","gclus")
 library(psych)
 library(nlme)
+
+
+###############################
+
+install.packages("lsr")
+library(lsr)
