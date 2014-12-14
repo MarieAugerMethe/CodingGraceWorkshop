@@ -6,8 +6,20 @@
 \usepackage{amssymb}
 
 \begin{document}
-
 \begin{frame}
+\textbf{\texttt{R} for Economic and Social Research}
+\begin{enumerate}
+\item \texttt{R} Packages and Taskviews, 10 packages
+\item Official Statistics and Survey Methodology
+\item Econometric Tools: AER and Forecase
+\item The HadleyVerse : ggplot and dplyr
+\item Other Matters:  Julia and GitHub
+\item Instructional Design : DataCamp
+\end{enumerate}
+\end{frame}
+%=================================================================== %
+\begin{frame}
+\frametitle{Tidy Data}
 \textbf{\textit{Revision}}\\
 What are the three characteristics of tidy data?
 
@@ -30,6 +42,41 @@ Three Principles from Hadley Wickham's paper
 \end{itemize}
 \end{frame}
 %============================================================================ %
+
+
+
+\begin{frame}
+\frametitle{dplyr : Grammar of data manipulation}
+	\begin{itemize}
+\item dplyr is a new package which provides a set of tools for efficiently manipulating datasets in R.
+\item dplyr is the next iteration of plyr, focussing on only data frames. \item dplyr is faster, has a more consistent API and should be easier to use. 
+	\end{itemize}
+
+
+\end{frame}
+%============================================================= %
+\begin{frame}
+\frametitle{dplyr : Grammar of data manipulation}
+(abstract by Hadley Wickahm)
+
+There are three key ideas that underlie dplyr:
+
+1) Your time is important, so Romain Francois has written the key pieces in Rcpp to provide blazing fast performance. Performance will only get better over time, especially once we figure out the best way to make the most of multiple processors. 
+
+\end{frame}
+%============================================================= %
+\begin{frame}
+2) Tabular data is tabular data regardless of where it lives, so you should use the same functions to work with it. 
+
+With dplyr, anything you can do to a local data frame you can also do to a remote database table. PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
+\end{frame}
+%============================================================= %
+\begin{frame}
+\frametitle{dplyr : Grammar of data manipulation}
+3) The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  group\_by, summarise,mutate, filter, select and arrange). Each function does one only thing, but does it well.
+
+\end{frame}	
+	
 %ESRItalk
 \begin{frame}[fragile]
 The American Community Survey distributes downloadable data about United States communities. 
