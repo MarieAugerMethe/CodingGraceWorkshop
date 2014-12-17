@@ -264,21 +264,21 @@ https://spark-public.s3.amazonaws.com/dataanalysis/PUMSDataDict06.pdf
 How many housing units in this survey were worth more than \$1,000,000?
 % **53**
 
-\begin{framed}
-	\begin{verbatim}
-	# Download 2006 microdata survey 
-	# re: housing for Idaho using download.file()
-	# setwd("~/DA")
-	download.file(
-	'https://spark-public.s3.amazonaws.com/dataanalysis/ss06hid.csv',
-	"ss06hid.csv", method="curl")
-	
-	# Download the code book:
-	# download.file(
-	'https://spark-public.s3.amazonaws.com/dataanalysis/PUMSDataDict06.pdf',
-	"PUMSDataDict06.pdf", method="curl")
-	\end{verbatim}
-\end{framed}
+%\begin{framed}
+%	\begin{verbatim}
+%	# Download 2006 microdata survey 
+%	# re: housing for Idaho using download.file()
+%	# setwd("~/DA")
+%	download.file(
+%	'https://spark-public.s3.amazonaws.com/dataanalysis/ss06hid.csv',
+%	"ss06hid.csv", method="curl")
+%	
+%	# Download the code book:
+%	# download.file(
+%	'https://spark-public.s3.amazonaws.com/dataanalysis/PUMSDataDict06.pdf',
+%	"PUMSDataDict06.pdf", method="curl")
+%	\end{verbatim}
+%\end{framed}
 
 \end{frame}
 
@@ -291,14 +291,15 @@ How many housing units in this survey were worth more than \$1,000,000?
 	# load the data into R
 	idahoData <- read.csv("ss06hid.csv", header=TRUE)
 	
-	# are we sure it's just Idaho data?
+	# Is it just Idaho data?
 	table(idahoData$ST)
 	#Check the PDF - what does 16 mean?
 	
 	#any missing data?
 	summary(idahoData$ST)
 	
-	# How many housing units [are] worth more than $1,000,000?
+	# How many housing units are worth
+	# more than $1,000,000?
 	table(idahoData$TYPE,idahoData$VAL)
 	\end{verbatim}
 \end{framed}
@@ -577,18 +578,20 @@ https://spark-public.s3.amazonaws.com/dataanalysis/ss06pid.csv
 \end{frame}
 %========================================================================================== %
 \begin{frame}[fragile]
+	
+%	download.file(
+%	'https://spark-public.s3.amazonaws.com/dataanalysis/ss06pid.csv',
+%	'ss06pid.csv', method='curl')
+%	
+\textbf{Merging Data Sets}
 \begin{framed} 
 	\begin{verbatim}
-	download.file(
-	'https://spark-public.s3.amazonaws.com/dataanalysis/ss06pid.csv',
-	'ss06pid.csv', method='curl')
-	
-	rm(idahoData)
+
 	housingData <- read.csv("ss06hid.csv", header=TRUE)
-	populationData <- read.csv("ss06pid.csv", header=TRUE)
+	popuData <- read.csv("ss06pid.csv", header=TRUE)
 	
 	dim(merge(housingData, 
-	populationData, by="SERIALNO", all=TRUE))
+	popuData, by="SERIALNO", all=TRUE))
 	\end{verbatim}
 \end{framed} 
 

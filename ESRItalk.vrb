@@ -1,15 +1,17 @@
+
+% download.file(
+% 'https://spark-public.s3.amazonaws.com/dataanalysis/ss06pid.csv',
+% 'ss06pid.csv', method='curl')
+%
+\textbf{Merging Data Sets}
 \begin{framed}
 \begin{verbatim}
-download.file(
-'https://spark-public.s3.amazonaws.com/dataanalysis/ss06pid.csv',
-'ss06pid.csv', method='curl')
 
-rm(idahoData)
 housingData <- read.csv("ss06hid.csv", header=TRUE)
-populationData <- read.csv("ss06pid.csv", header=TRUE)
+popuData <- read.csv("ss06pid.csv", header=TRUE)
 
 dim(merge(housingData,
-populationData, by="SERIALNO", all=TRUE))
+popuData, by="SERIALNO", all=TRUE))
 \end{verbatim}
 \end{framed}
 
