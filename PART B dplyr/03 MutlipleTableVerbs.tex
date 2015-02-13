@@ -1,0 +1,42 @@
+
+\documentclass{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{framed}
+
+\hoffset=0pt
+\oddsidemargin=15pt
+\voffset=0pt
+\marginparwidth = 2pt
+\textheight = 642pt
+\textwidth = 420pt
+
+
+\begin{document}
+\section{Multiple table verbs}
+
+As well as verbs that work on a single \texttt{tbl}, there are also a set of useful verbs that work with two \texttt{tbl}s at a time: joins and set operations.
+
+\subsection*{Joins}
+dplyr implements the four most useful joins from SQL:
+
+\begin{itemize}
+\item \texttt{inner\_join(x, y)}: matching x + y
+\item \texttt{left\_join(x, y)}: all x + matching y
+\item \texttt{semi\_join(x, y)}: all x with match in y
+\item \texttt{anti\_join(x, y)}: all x without match in y
+\end{itemize}
+
+\subsection*{Set Theory Operations}
+
+dplyr implements the methods for set theory operations
+
+\begin{itemize}
+\item \texttt{intersect(x, y)}: all rows in both x and y
+\item \texttt{union(x, y)}: rows in either x or y
+\item \texttt{setdiff(x, y)}: rows in x, but not y
+\end{itemize}
+%================================================================= %
+\end{document}

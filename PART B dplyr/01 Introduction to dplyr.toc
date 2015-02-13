@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}dplyr : Grammar of data manipulation}{2}
+\contentsline {subsection}{\numberline {1.1}dplyr : abstract by Hadley Wickham}{2}
+\contentsline {subsection}{\numberline {1.2}Working with dplyr}{2}
+\contentsline {subsection}{\numberline {1.3}Installing dplyr}{2}
+\contentsline {subsection}{\numberline {1.4}Tidy Data}{3}
+\contentsline {subsection}{\numberline {1.5}Key data structures}{3}
+\contentsline {section}{\numberline {2}Worked Examples}{4}
+\contentsline {subsection}{\numberline {2.1}Converting to tbl}{4}
+\contentsline {subsection}{\numberline {2.2}Filter rows with \texttt {filter()}}{4}
+\contentsline {subsection}{\numberline {2.3} \texttt {group\_by()}}{5}

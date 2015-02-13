@@ -168,66 +168,7 @@ rstudio server pro! #rstats"
 \end{framed}
 
 \end{frame}
-%=================================================================== %
-\begin{frame}	
-	
-\frametitle{Tidy Data}
-\textbf{\textit{Revision}}\\
-What are the three characteristics of tidy data?
 
-\begin{itemize}
-	\item ``\textit{\textbf{Tidy data}}" by Hadley Wickham (RStudio)
-	\item Submission to Journal of Statistical Software
-	\item (http://vita.had.co.nz/papers/tidy-data.pdf)
-\end{itemize}
-
-\end{frame}
-%============================================================================ %
-%ESRItalk
-\begin{frame}
-
-Three Principles from Hadley Wickham's paper
-\begin{itemize}
-	\item[1.] Each variable forms a column, 
-	\item[2.] Each observation forms a row, 
-	\item[3.] Each table/file stores data about one kind of observation.
-\end{itemize}
-\end{frame}
-%============================================================================ %
-
-
-
-\begin{frame}
-\frametitle{dplyr : Grammar of data manipulation}
-	\begin{itemize}
-\item dplyr is a new package which provides a set of tools for efficiently manipulating datasets in R.
-\item dplyr is the next iteration of plyr, focussing on only data frames. \item dplyr is faster, has a more consistent API and should be easier to use. 
-	\end{itemize}
-
-
-\end{frame}
-%============================================================= %
-\begin{frame}
-\frametitle{dplyr : Grammar of data manipulation}
-(abstract by Hadley Wickahm)
-
-There are three key ideas that underlie dplyr:
-
-1) Your time is important, so Romain Francois has written the key pieces in Rcpp to provide blazing fast performance. Performance will only get better over time, especially once we figure out the best way to make the most of multiple processors. 
-
-\end{frame}
-%============================================================= %
-\begin{frame}
-2) Tabular data is tabular data regardless of where it lives, so you should use the same functions to work with it. 
-
-With dplyr, anything you can do to a local data frame you can also do to a remote database table. PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
-\end{frame}
-%============================================================= %
-\begin{frame}
-\frametitle{dplyr : Grammar of data manipulation}
-3) The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  group\_by, summarise,mutate, filter, select and arrange). Each function does one only thing, but does it well.
-
-\end{frame}	
 	
 %ESRItalk
 \begin{frame}[fragile]
