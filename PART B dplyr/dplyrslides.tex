@@ -21,11 +21,11 @@
 
 \begin{frame}
 \frametitle{dplyr : abstract by Hadley Wickham}	
-(Hadley Wickham's Abstract)
+\textbf{Hadley Wickham's Abstract}\\
 	\noindent There are three key ideas that underlie dplyr:
 	
 	\begin{enumerate}
-		\item[1] Your time is important, so Romain Francois has written the key pieces in Rcpp to provide blazing fast performance. \\ Performance will only get better over time, especially once we figure out the best way to make the most of multiple processors. 
+		\item[1] Your time is important, so Romain Francois has written the key pieces in \textbf{Rcpp} to provide blazing fast performance. \\ \bigskip Performance will only get better over time, especially once we figure out the best way to make the most of multiple processors. 
 \end{enumerate}
 \end{frame}
 %========================================================== %
@@ -33,9 +33,9 @@
 \frametitle{dplyr : abstract by Hadley Wickham}	
 
 \begin{enumerate}
-		\item[2] Tabular data is tabular data regardless of where it lives, so you should use the same functions to work with it. \\
+		\item[2] Tabular data is tabular data regardless of where it lives, so you should use the same functions to work with it. \\ \bigskip
 		
-		With dplyr, anything you can do to a local data frame you can also do to a remote database table. \\ PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
+		With dplyr, anything you can do to a local data frame you can also do to a remote database table. \\ \bigskip PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
 \end{enumerate}
 \end{frame}
 %========================================================== %
@@ -43,7 +43,8 @@
 \frametitle{dplyr : abstract by Hadley Wickham}	
 
 	\begin{enumerate}
-		\item[3] The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  \texttt{group\_by}, \texttt{summarise},\texttt{mutate}, \texttt{filter}, \texttt{select} and \texttt{arrange}). \\ Each function does one only thing, but does it well.
+		\item[3] The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data
+		\\ \bigskip \textbf{dplyr} makes this easier by having individual functions that correspond to the most common operations  \texttt{group\_by}, \texttt{summarise},\texttt{mutate}, \texttt{filter}, \texttt{select} and \texttt{arrange}). 	\\ \bigskip Each function does one only thing, but does it well.
 	\end{enumerate}
 \end{frame}
 %======================================================================================= %
@@ -114,7 +115,8 @@ The key object in \textbf{dplyr} is a \texttt{tbl}, a representation of a tabula
 \end{frame}
 %============================================================================= %
 \begin{frame}
-\noindent For advanced users, \textbf{dplyr} also supports the following databases: \textit{SQLite, PostgreSQL, Redshift, MySQL/MariaDB, Bigquery, MonetDB} and data cubes with arrays (partial implementation). We will not cover those topics in this workshop.
+	\textbf{Advances Database Users}\\
+\noindent For advanced users, \textbf{dplyr} also supports the following databases: \textit{SQLite, PostgreSQL, Redshift, MySQL/MariaDB, Bigquery, MonetDB} and data cubes with arrays (partial implementation).\\ \bigskip We will not cover those topics in this workshop.
 \end{frame}
 %============================================================================= %
 \begin{frame}
@@ -210,6 +212,21 @@ dplyr aims to provide a function for each basic verb of data manipulating:
 \item You can then use the resulting object in exactly the same functions as above; they’ll automatically work “by group” when the input is a grouped.
 \end{itemize}
 \end{frame}
+
+\begin{frame}
+%======================================================================================%
+\frametitle{\texttt{group\_by }}
+
+Group a tbl by one or more variables.\\ \bigskip
+
+\textbf{Description}\\ \bigskip
+
+Most data operations are useful done on groups defined by variables in the the dataset. The
+\textbf{group\_by} function takes an existing tbl and converts it into a grouped tbl where operations are
+performed "by group".
+
+\end{frame}
+%=========================================================== %
 \begin{frame}
 \frametitle{Summary Statistics}
 You use \texttt{summarise()} with aggregate functions, which take a vector of values, and return a single number.\\ \bigskip There are many useful functions in base R like \texttt{min()}, \texttt{max()}, \texttt{mean()}, \texttt{sum()}, \texttt{sd()}, \texttt{median()}, and \texttt{IQR()}.\\ \bigskip dplyr provides a handful of others:
@@ -270,11 +287,14 @@ summarise(iris.sp,mean(Sepal.Length), sd(Petal.Length))
 \begin{verbatim}
 	iris.vir1 <- filter(iris,Species=="virginica")
 	
-	# Species is Virginica OR Petal.length is greater than 3.2
+	# Species is Virginica OR Petal.length is 
+	# greater than 3.2
 	
-	iris.vir2 <- filter(iris,Species=="virginica" | Petal.Length >3.2)
+	iris.vir2 <- filter(iris,
+	   Species=="virginica" | Petal.Length >3.2)
 	
-	iris.vir3 <- filter(iris,Species=="virginica" & Petal.Length >3.9)
+	iris.vir3 <- filter(iris,
+	   Species=="virginica" & Petal.Length >3.9)
 	
 \end{verbatim}
 \end{framed}
@@ -289,7 +309,7 @@ summarise(iris.sp,mean(Sepal.Length), sd(Petal.Length))
 
 \item If you provide more than one column name, each additional column will be used to break ties in the values of preceding columns.
 
-\item Use \texttt{desc()} (or \texttt{rev()})to order a column in descending order:
+\item Use \texttt{desc()} (or \texttt{rev()}) to order a column in descending order.
 
 %arrange(flights, desc(arr_delay))
 \end{itemize}
@@ -464,6 +484,37 @@ dplyr implements the four most useful joins from SQL:
 	\item \texttt{semi\_join(x, y)}: all x with match in y
 	\item \texttt{anti\_join(x, y)}: all x without match in y
 \end{itemize}
+\end{frame}
+\begin{frame}
+\begin{figure}
+\centering
+\includegraphics[width=1.00\linewidth]{SQLjoins}
+
+\end{figure}
+
+\end{frame}
+\begin{frame}
+	\frametitle{Joins}
+Pretend data set listing country of origin for each species.
+The variables ``Species" is common to both data frames.
+	\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{irisnewdata}
+\caption{Second Data Frame}
+\label{fig:irisnewdata}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Joins}
+	\begin{figure}
+\centering
+\includegraphics[width=0.97\linewidth]{irisjoin}
+
+\label{fig:irisjoin}
+\end{figure}
+
 \end{frame}
 %======================================================================= %
 
