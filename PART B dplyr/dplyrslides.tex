@@ -10,8 +10,9 @@
 	
 \begin{frame}[fragile]
 \frametitle{dplyr : Grammar of data manipulation}
+\textbf{What is dplyr?}
 \begin{itemize}
-	\item dplyr  is mainly authored by Hadley Wickham and Romain Francois. It is designed to be intuitive and easy to learn, thereby making “doing things” in \texttt{R} more user friendly.
+	\item dplyr is mainly authored by Hadley Wickham and Romain Francois. It is designed to be intuitive and easy to learn, thereby making ``doing things" in \texttt{R} more user-friendly.
 	\item dplyr is a new package which provides a set of tools for efficiently manipulating datasets in \texttt{R}.
 	\item dplyr is the next iteration of plyr, focussing on only data frames. \item dplyr is faster, has a more consistent API and should be easier to use. 
 \end{itemize}
@@ -20,11 +21,11 @@
 
 \begin{frame}
 \frametitle{dplyr : abstract by Hadley Wickham}	
-	
+(Hadley Wickham's Abstract)
 	\noindent There are three key ideas that underlie dplyr:
 	
 	\begin{enumerate}
-		\item[1] Your time is important, so Romain Francois has written the key pieces in Rcpp to provide blazing fast performance. Performance will only get better over time, especially once we figure out the best way to make the most of multiple processors. 
+		\item[1] Your time is important, so Romain Francois has written the key pieces in Rcpp to provide blazing fast performance. \\ Performance will only get better over time, especially once we figure out the best way to make the most of multiple processors. 
 \end{enumerate}
 \end{frame}
 %========================================================== %
@@ -32,9 +33,9 @@
 \frametitle{dplyr : abstract by Hadley Wickham}	
 
 \begin{enumerate}
-		\item[2] Tabular data is tabular data regardless of where it lives, so you should use the same functions to work with it. 
+		\item[2] Tabular data is tabular data regardless of where it lives, so you should use the same functions to work with it. \\
 		
-		With dplyr, anything you can do to a local data frame you can also do to a remote database table. PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
+		With dplyr, anything you can do to a local data frame you can also do to a remote database table. \\ PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
 \end{enumerate}
 \end{frame}
 %========================================================== %
@@ -42,14 +43,14 @@
 \frametitle{dplyr : abstract by Hadley Wickham}	
 
 	\begin{enumerate}
-		\item[3] The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  group\_by, summarise,mutate, filter, select and arrange). Each function does one only thing, but does it well.
+		\item[3] The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  \texttt{group\_by}, \texttt{summarise},\texttt{mutate}, \texttt{filter}, \texttt{select} and \texttt{arrange}). \\ Each function does one only thing, but does it well.
 	\end{enumerate}
 \end{frame}
 %======================================================================================= %
 
 \begin{frame}
 	
-	\frametitle{Working with dplyr} \textbf{dplyr} focussed on tools for working with data frames (hence the d in the name). 
+	\frametitle{Working with dplyr} \textbf{dplyr} focussed on tools for working with data frames (hence the \textbf{d} in the name). 
 \textbf{dplyr} has three main goals:
 
 \begin{itemize}
@@ -75,7 +76,11 @@
 %===================================================================== %
 \begin{frame}
 \frametitle{Tidy Data}
-To make the most of dplyr, Hadley Wickham recommends that you familiarise yourself with the \textbf{principles of tidy data}. This will help you get your data into a form that works well with \textbf{dplyr}, \textbf{ggplot2} and \texttt{R}'s many modelling functions.\\
+\begin{itemize}
+
+\item To make the most of dplyr, Hadley Wickham recommends that you familiarise yourself with the \textbf{principles of tidy data}. 
+\item This will help you get your data into a form that works well with \textbf{dplyr}, \textbf{ggplot2} and \texttt{R}'s many modelling functions.
+\end{itemize}
 \end{frame}
 
 %====================================================================== %
@@ -88,7 +93,7 @@ To make the most of dplyr, Hadley Wickham recommends that you familiarise yourse
 		\item[3.] Each table/file stores data about one kind of observation.
 	\end{itemize}
 \end{framed}
-\noindent \textbf{Remark:}  The paper ``\textit{\textbf{Tidy data}}" by Hadley Wickham (RStudio) can be downloaded from 
+\noindent \textbf{Remark:} \\  The paper ``\textit{\textbf{Tidy data}}" by Hadley Wickham (RStudio) can be downloaded from 
 \begin{verbatim}
 http://vita.had.co.nz/papers/tidy-data.pdf
 \end{verbatim}
@@ -116,7 +121,7 @@ The key object in \textbf{dplyr} is a \texttt{tbl}, a representation of a tabula
 	\frametitle{CRAN tutorial}
 \begin{figure}
 \centering
-\includegraphics[width=1.05\linewidth]{"C:/Users/Kevin/Documents/GitHub/CodingGraceWorkshop/PART B dplyr/introdplyr"}
+\includegraphics[width=1.15\linewidth]{"C:/Users/Kevin/Documents/GitHub/CodingGraceWorkshop/PART B dplyr/introdplyr"}
 
 \end{figure}
 
@@ -179,12 +184,44 @@ library(dplyr)
 %==================================================================================== %
 \begin{frame}
 \frametitle{dplyr; Single Table Verbs}
-	\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{singletableverbs}
+dplyr aims to provide a function for each basic verb of data manipulating:
+\begin{itemize}
+	\item \texttt{ filter() } (and \texttt{  slice() })
+	\item \texttt{ arrange() }
+	\item \texttt{ select() } (and \texttt{  rename() })
+	\item \texttt{ distinct() }
+	\item \texttt{ mutate() } (and \texttt{  transmute() })
+	\item \texttt{ summarise() }
+	\item \texttt{ sample\_n() } and \texttt{  sample\_frac() }
+\end{itemize}
+%	\begin{figure}
+%\centering
+%\includegraphics[width=0.7\linewidth]{singletableverbs}
+%
+%\end{figure}
+\end{frame}
+%================================================================================ %
+\begin{frame}
+\frametitle{Grouped operations}
+\begin{itemize}
 
-\end{figure}
+\item The verbs are useful, but they become really powerful when you combine them with the idea of “group by”, repeating the operation individually on groups of observations within the dataset. 
+\item In dplyr, you use the \texttt{group\_by()} function to describe how to break a dataset down into groups of rows. 
+\item You can then use the resulting object in exactly the same functions as above; they’ll automatically work “by group” when the input is a grouped.
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Summary Statistics}
+You use \texttt{summarise()} with aggregate functions, which take a vector of values, and return a single number.\\ \bigskip There are many useful functions in base R like \texttt{min()}, \texttt{max()}, \texttt{mean()}, \texttt{sum()}, \texttt{sd()}, \texttt{median()}, and \texttt{IQR()}.\\ \bigskip dplyr provides a handful of others:
+\begin{itemize}
+\item 
+\texttt{n()}: number of observations in the current group
+\item 
+\texttt{n\_distinct(x)}: count the number of unique values in x.
+\end{itemize}
 
+%
+%first(x), last(x) and nth(x, n) - these work similarly to x[1], x[length(x)], and x[n] but give you more control of the result if the value isn’t present.
 \end{frame}
 %=========================================================================================%
 \begin{frame}[fragile]
@@ -289,6 +326,72 @@ summarise(iris.sp,mean(Sepal.Length), sd(Petal.Length))
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Selection Options with \texttt{select()}}
+\begin{figure}
+\centering
+\includegraphics[width=01.05\linewidth]{selectoptions}
+\end{figure}
+
+\end{frame}
+\begin{frame}
+	\frametitle{Selection Options with \texttt{select()}}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.69\linewidth]{selectendswith}
+	\end{figure}
+	
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Selection Options with \texttt{select()}}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.69\linewidth]{selectioncontaints}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Sampling rows with \texttt{sample\_n()} and \texttt{sample\_frac()}}
+\begin{itemize}
+\item You can use \texttt{sample\_n()} and \texttt{sample\_frac()} to take a random sample of rows, either a fixed number for \texttt{sample\_n()} or a fixed fraction for \texttt{sample\_frac()}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sampling rows with \texttt{sample\_n()} and \texttt{sample\_frac()}}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.07\linewidth]{irissample1}
+\end{figure}
+
+\end{frame}
+%------------------------------------------------------------------------------------ %
+\begin{frame}
+	\frametitle{Sampling rows with \texttt{sample\_n()} and \texttt{sample\_frac()}}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.07\linewidth]{irissample2}
+	\end{figure}
+	
+\end{frame}
+%------------------------------------------------------------------------------------ %
+\begin{frame}
+	\frametitle{Sampling rows with \texttt{sample\_n()} and \texttt{sample\_frac()}}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.07\linewidth]{irissample3}
+	\end{figure}
+	
+\end{frame}
 %=======================================================================================%
 \begin{frame}[fragile]
 \frametitle{Add new columns with \texttt{mutate()} }
@@ -297,7 +400,10 @@ As well as selecting from the set of existing columns, it’s often useful to ad
 
 \begin{framed}
 \begin{verbatim}
-iris2 =  mutate(iris, PW2 = log(Petal.Width), PL2=sqrt(Petal.Length) )
+iris2 =  mutate(iris, 
+     PW2 = log(Petal.Width), 
+     PL2=sqrt(Petal.Length) )
+     
 head(iris2)
 \end{verbatim}
 \end{framed}
@@ -343,8 +449,35 @@ head(iris3)
 
 
 %% Graphic irismutate2
+\begin{frame}
+	\frametitle{Multiple table verbs}
 
+As well as verbs that work on a single \texttt{tbl}, there are also a set of useful verbs that work with two \texttt{tbl}s at a time: joins and set operations.
+\end{frame}
+\begin{frame}
+	\frametitle{Joins}
+dplyr implements the four most useful joins from SQL:
 
+\begin{itemize}
+	\item \texttt{inner\_join(x, y)}: matching x + y
+	\item \texttt{left\_join(x, y)}: all x + matching y
+	\item \texttt{semi\_join(x, y)}: all x with match in y
+	\item \texttt{anti\_join(x, y)}: all x without match in y
+\end{itemize}
+\end{frame}
+%======================================================================= %
+
+\begin{frame}
+\frametitle{Set Theory Operations}
+
+dplyr implements the methods for set theory operations
+
+\begin{itemize}
+	\item \texttt{intersect(x, y)}: all rows in both x and y
+	\item \texttt{union(x, y)}: rows in either x or y
+	\item \texttt{setdiff(x, y)}: rows in x, but not y
+\end{itemize}
+\end{frame}
 
 
 \end{document}
