@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.10.12)  13 FEB 2015 18:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.10.12)  20 FEB 2015 20:28
 entering extended mode
 **01*Introduction*to*dplyr.tex
 
@@ -210,9 +210,10 @@ Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
+ [4]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 161.
- [4] [5]
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 187.
+ [5]
 ("C:\Users\Kevin\Documents\GitHub\CodingGraceWorkshop\PART B dplyr\01 Introduct
 ion to dplyr.aux") ) 
 Here is how much of TeX's memory you used:
@@ -222,7 +223,7 @@ Here is how much of TeX's memory you used:
  5370 multiletter control sequences out of 15000+200000
  7899 words of font info for 31 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,26p,380b,166s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,26p,380b,177s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
@@ -232,7 +233,7 @@ cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 ti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12
 .pfb>
-Output written on "01 Introduction to dplyr.pdf" (5 pages, 118783 bytes).
+Output written on "01 Introduction to dplyr.pdf" (5 pages, 123382 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

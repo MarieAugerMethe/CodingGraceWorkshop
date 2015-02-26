@@ -13,7 +13,8 @@
 \textheight = 642pt
 \textwidth = 420pt
 
-
+%- http://renkun.me/pipeR-tutorial/Examples/dplyr.html
+% - https://rpubs.com/justmarkham/dplyr-tutorial
 \begin{document}
 	
 	\tableofcontents
@@ -115,10 +116,26 @@ The key object in \textbf{dplyr} is a \texttt{tbl}, a representation of a tabula
 
 \noindent For advanced users, \textbf{dplyr} also supports the following databases: \textit{SQLite, PostgreSQL, Redshift, MySQL/MariaDB, Bigquery, MonetDB} and data cubes with arrays (partial implementation). We will not cover those topics in this workshop.
 
+\subsection*{The hflights data set}
+hflights is a dataset contains information about flights that departed Houston in 2011. In the description the author writes:
+\begin{quote}
+This dataset contains all flights departing from Houston airports IAH (George Bush Intercontinental) and HOU (Houston Hobby). The data comes from the Research and Innovation Technology Administration at the Bureau of Transporation statistics:
+\end{quote}
+\begin{verbatim}
+       http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0
+\end{verbatim}
 %================================================================================ %
 \newpage
 \section{Worked Examples}
 
+\subsection{Data Sets}
+\begin{description}
+\item[airlines]
+\item[airports]
+\item[flights]
+\item[planes] 
+\item[weather]
+\end{description}
 \subsection*{New York Flights Exercise}
 
 To explore the basic data manipulation verbs of dplyr, we’ll start with the built in \textit{nycflights13} data frame. This dataset comes from the US Bureau of Transporation Statistics contains information on flights that departed from New York City in 2013. 
@@ -157,15 +174,17 @@ dplyr can work with data frames as is, but if you’re dealing with large data, 
 
 
 
-
+%=================================================================================== %
 \subsection{Filter rows with \texttt{filter()}}
 
 \texttt{filter()} allows you to select a subset of the rows of a data frame. The first argument is the name of the data frame, and the second and subsequent are filtering expressions evaluated in the context of that data frame:
-For example, we can select all flights on January 1st with:
+For example, we can select all flights on January 1st (New Years Day)with:
 
 \begin{framed}
 \begin{verbatim}
-filter(flights, month == 1, day == 1)
+> flightsNYD = filter(flights, month == 1, day == 1)
+> dim(flightsNYD)
+[1] 842  16
 \end{verbatim}
 \end{framed}
 
@@ -173,10 +192,35 @@ filter(flights, month == 1, day == 1)
 
 \subsection{ \texttt{group\_by()}}
 
-The \texttt{tbl} also comes in a grouped variant which allows you to easily perform operations "by group". Suppose we wish to group by carrier.
+The \texttt{tbl} also comes in a grouped variant which allows you to easily perform operations ``by group". Suppose we wish to group by carrier.
 
 \begin{verbatim}
-carriers_df  <- group_by(flights, carrier)
+carriersDF  <- group_by(flights, carrier)
 \end{verbatim}
 
+What type of object is \texttt{carriersDF}? (multiple answers)
+
+\begin{framed}
+\begin{verbatim}
+by_tailnum <- group_by(flights, tailnum)
+delay <- summarise(by_tailnum,
+	count = n(),
+	dist = mean(distance, na.rm = TRUE),
+	delay = mean(arr_delay, na.rm = TRUE))
+delay <- filter(delay, count > 20, dist < 2000)
+\end{verbatim}
+\end{framed}
+\newpage
+%======================================================================================================== %
+\section{weather data set}
+\begin{itemize}
+	\item \texttt{origin}: Weather station. Named origin to faciliate merging with flights data
+	\item \texttt{year,month,day,hour}: Time of recording
+	\item \texttt{temp,dewp}: Temperature and dewpoint in F
+	\item \texttt{humid}: Relative humidity
+	\item \texttt{wind\_dir,wind\_speed,wind\_gust}: Wind direction (in degrees), speed and gust speed (in mph)
+	\item \texttt{precip}: Preciptation, in inches
+	\item \texttt{pressure}: Sea level pressure in millibars
+	\item \texttt{visib}: Visibility in miles
+\end{itemize}
 \end{document}
