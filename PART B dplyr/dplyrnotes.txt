@@ -1,0 +1,108 @@
+% = http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+
+\begin{frame}[fragile]
+\begin{verbatim}
+% introdplyr
+
+\end{verbatim}
+\end{frame}
+%=======================================================================================%
+library(dplyr)
+
+\begin{frame}[fragile]
+\begin{verbatim}
+\begin{verbatim}
+> names(iris)
+[1] "Sepal.Length"
+[2] "Sepal.Width" 
+[3] "Petal.Length"
+[4] "Petal.Width" 
+[5] "Species"    
+\end{verbatim}
+\end{frame}
+%===================================================================================%
+\begin{frame}[fragile]
+\begin{verbatim}
+dim(iris)
+class(iris)
+mode(iris)
+\end{verbatim}
+\end{frame}
+%=========================================================================================%
+\begin{frame}[fragile]
+\begin{verbatim}
+
+iris.sp <- group_by(iris,Species)
+class(iris.sp)
+
+summarise(iris.sp,mean(Sepal.Length))
+summarise(iris.sp,sd(Petal.Length))
+\end{verbatim}
+\end{frame}
+%=========================================================================================%
+
+Filter rows with filter()
+
+filter() allows you to select a subset of the rows of a data frame. The first argument is the name of the data frame, and the second and subsequent are filtering expressions evaluated in the context of that data frame:
+
+iris.vir1 <- filter(iris,Species=="virginica")
+
+Species is Virginica OR Petal.length is greater than 3.2
+
+iris.vir2 <- filter(iris,Species=="virginica" | Petal.Length >3.2)
+
+iris.vir3 <- filter(iris,Species=="virginica" & Petal.Length >3.9)
+
+\end{verbatim}
+\end{frame}
+%========================================================================================%
+
+arrange() works similarly to filter() except that instead of filtering or selecting rows, it reorders them. 
+
+It takes a data frame, and a set of column names (or more complicated expressions) to order by.
+
+If you provide more than one column name, each additional column will be used to break ties in the values of preceding columns:
+
+
+
+Use desc() to order a column in descending order:
+
+arrange(flights, desc(arr_delay))
+
+%=====================================================================================%
+
+Select columns with select()
+
+Often you work with large datasets with many columns where only a few are actually of interest to you. select() allows you to rapidly zoom in on a useful subset using operations that usually only work on numeric variable positions:
+Graphics: irisarrange
+
+%=======================================================================================%
+
+
+Add new columns with mutate()
+
+As well as selecting from the set of existing columns, it’s often useful to add new columns that are functions of existing columns. This is the job of mutate():
+
+
+\begin{verbatim}
+iris2 =  mutate(iris, PW2 = log(Petal.Width), PL2=sqrt(Petal.Length) )
+head(iris2)
+\end{verbatim}
+
+%% Graph irismutate
+
+%==========================================================================%
+
+mutate allows you to refer to columns that you just created:
+
+\begin{verbatim}
+iris3 =  mutate(iris, PW2 = log(Petal.Width), PL2=sqrt(Petal.Length), Ratio=PL2/PW2 )
+head(iris3)
+\end{verbatim}
+\end{frame}
+
+%% Graphic irismutate2
+\end{verbatim}
+%======================================================================================%
+
+
