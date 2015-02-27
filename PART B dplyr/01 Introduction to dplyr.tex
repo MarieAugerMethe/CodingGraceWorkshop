@@ -34,7 +34,7 @@ This is the draft document for in-session slides.
 
 \section{dplyr : Grammar of data manipulation}
 	\begin{itemize}
-		\item dplyr  is mainly authored by Hadley Wickham and Romain Francois. It is designed to be intuitive and easy to learn, thereby making ‚Äúdoing things‚Äù in \texttt{R} more user friendly.
+		\item dplyr  is mainly authored by Hadley Wickham and Romain Francois. It is designed to be intuitive and easy to learn, thereby making data manipulationsÄù in \texttt{R} more user friendly.
 		\item dplyr is a new package which provides a set of tools for efficiently manipulating datasets in \texttt{R}.
 		\item dplyr is the next iteration of plyr, focussing on only data frames. \item dplyr is faster, has a more consistent API and should be easier to use. 
 	\end{itemize}
@@ -54,7 +54,7 @@ This is the draft document for in-session slides.
 	
 	With dplyr, anything you can do to a local data frame you can also do to a remote database table. PostgreSQL, MySQL, SQLite and Google bigquery support is built-in; adding a new backend is a matter of implementing a handful of S3 methods. 
 
-	\item The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  group\_by, summarise,mutate, filter, select and arrange). Each function does one only thing, but does it well.
+	\item The bottleneck in most data analyses is the time it takes for you to figure out what to do with your data, and dplyr makes this easier by having individual functions that correspond to the most common operations  (group\_by, summarise, mutate, filter, select and arrange). Each function does one only thing, but does it well.
 	\end{enumerate}
 	Author: Hadley Wickham
     \end{framed}
@@ -111,34 +111,36 @@ The key object in \textbf{dplyr} is a \texttt{tbl}, a representation of a tabula
 \item data tables - a data structure that is designed for intensive data analysis.
 \end{itemize}
 
-\noindent For this class, We will concentrate on \textbf{dplyr} exercises with data frames mostly. However we would advise you to try and learn more about working with data tables in the future.\\
+\noindent For this workshop, we will concentrate mostly on \textbf{dplyr} exercises with data frames. However, learning to work with data tables can be quite useful.\\
 \bigskip
 
 \noindent For advanced users, \textbf{dplyr} also supports the following databases: \textit{SQLite, PostgreSQL, Redshift, MySQL/MariaDB, Bigquery, MonetDB} and data cubes with arrays (partial implementation). We will not cover those topics in this workshop.
 
-\subsection*{The hflights data set}
-hflights is a dataset contains information about flights that departed Houston in 2011. In the description the author writes:
-\begin{quote}
-This dataset contains all flights departing from Houston airports IAH (George Bush Intercontinental) and HOU (Houston Hobby). The data comes from the Research and Innovation Technology Administration at the Bureau of Transporation statistics:
-\end{quote}
-\begin{verbatim}
-       http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0
-\end{verbatim}
+%MAM: Why are you presenting this data set? It looks like you are using the New York city data set not the Huston data sets?
+%\subsection*{The hflights data set}
+%hflights is a dataset contains information about flights that departed Houston in 2011. In the description the author writes:
+%\begin{quote}
+%This dataset contains all flights departing from Houston airports IAH (George Bush Intercontinental) and HOU (Houston Hobby). The data comes from the Research and Innovation Technology Administration at the Bureau of Transportation statistics:
+%\end{quote}
+%\begin{verbatim}
+ %      http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&Link=0
+%\end{verbatim}
 %================================================================================ %
 \newpage
 \section{Worked Examples}
 
-\subsection{Data Sets}
-\begin{description}
-\item[airlines]
-\item[airports]
-\item[flights]
-\item[planes] 
-\item[weather]
-\end{description}
-\subsection*{New York Flights Exercise}
+%\subsection{Data Sets}
+%MAM: This list is confusing here, maybe present them when you need them (in text?).
+%\begin{description}
+%\item[airlines]
+%\item[airports]
+%\item[flights]
+%\item[planes] 
+%\item[weather]
+%\end{description}
+\subsection{New York Flights Exercise}
 
-To explore the basic data manipulation verbs of dplyr, we‚Äôll start with the built in \textit{nycflights13} data frame. This dataset comes from the US Bureau of Transporation Statistics contains information on flights that departed from New York City in 2013. 
+To explore the basic data manipulation verbs of dplyr, we'll start with the built-in \textit{nycflights13} data frame. This dataset comes from the US Bureau of Transporation Statistics contains information on flights that departed from New York City in 2013. 
 
 
 \begin{framed}
@@ -150,7 +152,7 @@ data(flights)
 \end{framed}
 
 \subsubsection*{Preliminary Exercises}
-Using simple data inspection functions, answer the following questions.
+Using simple data inspection functions, answer the following questions. %MAM: Do you mean using simple dplyr inspection functions or any? I would actually list the functions that should be used  in the question.
 \begin{itemize}
 \item How many columns (i.e. variables) are there in this data set?
 \item How many rows (i.e. cases) are there?
@@ -170,7 +172,8 @@ Using simple data inspection functions, answer the following questions.
 \end{verbatim}
 \end{framed}
 \subsection{Converting to tbl}
-dplyr can work with data frames as is, but if you‚Äôre dealing with large data, it‚Äôs worthwhile to convert them to a \texttt{tbl\_df}: this is a wrapper around a data frame that won‚Äôt accidentally print a lot of data to the screen.
+% MAM: Note that the flights data set is already tbl 
+The dataset flights is of class \texttt{tbl\_df}, which is a wrapper around a data frame. \texttt{tbl\_df} prevents theÄô accidental printing of large dataset to the screen. While \textbf{dplyr} can work with data frames as is, if you're dealing with large data it'Äôs worth converting them to a \texttt{tbl\_df} using the function \texttt{as.tbl()}.
 
 
 
@@ -178,7 +181,7 @@ dplyr can work with data frames as is, but if you‚Äôre dealing with large data, 
 \subsection{Filter rows with \texttt{filter()}}
 
 \texttt{filter()} allows you to select a subset of the rows of a data frame. The first argument is the name of the data frame, and the second and subsequent are filtering expressions evaluated in the context of that data frame:
-For example, we can select all flights on January 1st (New Years Day)with:
+For example, we can select all flights on January 1st (New Years Day) with:
 
 \begin{framed}
 \begin{verbatim}
@@ -194,32 +197,34 @@ For example, we can select all flights on January 1st (New Years Day)with:
 
 The \texttt{tbl} also comes in a grouped variant which allows you to easily perform operations ``by group". Suppose we wish to group by carrier.
 
+\begin{framed}
 \begin{verbatim}
-carriersDF  <- group_by(flights, carrier)
+> carriersDF  <- group_by(flights, carrier)
 \end{verbatim}
+\end{framed}
 
 What type of object is \texttt{carriersDF}? (multiple answers)
 
 \begin{framed}
 \begin{verbatim}
-by_tailnum <- group_by(flights, tailnum)
-delay <- summarise(by_tailnum,
-	count = n(),
-	dist = mean(distance, na.rm = TRUE),
-	delay = mean(arr_delay, na.rm = TRUE))
-delay <- filter(delay, count > 20, dist < 2000)
+> by_tailnum <- group_by(flights, tailnum)
+> delay <- summarise(by_tailnum,
+                         count = n(), 
+                         dist = mean(distance, na.rm = TRUE),
+                         delay = mean(arr_delay, na.rm = TRUE))
+> delay <- filter(delay, count > 20, dist < 2000)
 \end{verbatim}
 \end{framed}
 \newpage
 %======================================================================================================== %
-\section{weather data set}
+\section{Weather data set}
 \begin{itemize}
-	\item \texttt{origin}: Weather station. Named origin to faciliate merging with flights data
+	\item \texttt{origin}: Weather station. Named origin to facilitate merging with flights data
 	\item \texttt{year,month,day,hour}: Time of recording
 	\item \texttt{temp,dewp}: Temperature and dewpoint in F
 	\item \texttt{humid}: Relative humidity
 	\item \texttt{wind\_dir,wind\_speed,wind\_gust}: Wind direction (in degrees), speed and gust speed (in mph)
-	\item \texttt{precip}: Preciptation, in inches
+	\item \texttt{precip}: Precipitation, in inches
 	\item \texttt{pressure}: Sea level pressure in millibars
 	\item \texttt{visib}: Visibility in miles
 \end{itemize}
